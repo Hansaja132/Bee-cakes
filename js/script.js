@@ -165,10 +165,42 @@ if (contactForm) {
       if (success) success.textContent = "";
       return;
     }
-    contactForm.reset();
-    Object.keys(fields).forEach((name) => setError(name, ""));
-    if (success)
-      success.textContent =
-        "Thank you. Your cake inquiry is ready for Bee Cakes to review.";
+
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    if (submitBtn) submitBtn.disabled = true;
+    if (success) success.textContent = "Sending...";
+
+    (async () => {
+      try {
+        // Endpoint should be provided by `js/config.js` as `window.FORMSPREE_ENDPOINT`.
+        const endpoint = (typeof window !== 'undefined' && window.FORMSPREE_ENDPOINT) || 'https://formspree.io/f/your-id';
+        if (!endpoint || endpoint.includes('your-id')) {
+          console.warn('Formspree endpoint is not configured. See js/config.example.js or .env.example.');
+        }
+
+        const formData = new FormData(contactForm);
+        const resp = await fetch(endpoint, {
+          method: 'POST',
+          body: formData,
+          headers: { Accept: 'application/json' },
+        });
+
+        if (resp.ok) {
+          contactForm.reset();
+          Object.keys(fields).forEach((name) => setError(name, ""));
+          if (success)
+            success.textContent =
+              "Thank you. Your cake inquiry is ready for Bee Cakes to review.";
+        } else {
+          const data = await resp.json().catch(() => ({}));
+          throw new Error(data.error || 'Submission failed.');
+        }
+      } catch (err) {
+        if (success) success.textContent = "Sorry — something went wrong. Try again.";
+        console.error('Contact submit error:', err);
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
+      }
+    })();
   });
 }
