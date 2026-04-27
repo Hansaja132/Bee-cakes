@@ -1,16 +1,21 @@
 :root {
-    --cream: #fff8ea;
-    --yellow: #ffd76a;
-    --honey: #d99a24;
-    --gold: #a76d0d;
-    --pink: #ffd5dc;
-    --rose: #e86f8d;
-    --cocoa: #4f3325;
-    --text: #2f2722;
-    --muted: #74665c;
-    --line: #f1dfc9;
+    --canvas: #f3d0fb;
+    --canvas-soft: #fae7fd;
+    --cream: #fff7e6;
+    --yellow: #ffd86a;
+    --honey: #d58b08;
+    --gold: #b27500;
+    --pink: #f3a3c9;
+    --rose: #ff6f87;
+    --sky: #74ccef;
+    --mint: #b1dc8d;
+    --coral: #f48f79;
+    --cocoa: #5a433a;
+    --text: #3a2b31;
+    --muted: #7d6677;
+    --line: #e7c4ef;
     --white: #fff;
-    --shadow: 0 18px 45px rgba(91, 58, 40, .14)
+    --shadow: 0 18px 45px rgba(122, 71, 146, .14)
 }
 
 * {
@@ -24,7 +29,10 @@ html {
 body {
     margin: 0;
     color: var(--text);
-    background: var(--white);
+    background:
+        radial-gradient(circle at 15% 12%, rgba(116, 204, 239, .14) 0 70px, transparent 72px),
+        radial-gradient(circle at 88% 18%, rgba(243, 163, 201, .16) 0 78px, transparent 80px),
+        linear-gradient(180deg, var(--canvas) 0%, #f7dbfc 42%, #fffaf0 100%);
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.6
 }
@@ -59,15 +67,16 @@ textarea {
     position: sticky;
     top: 0;
     z-index: 20;
-    background: rgba(255, 255, 255, .92);
-    border-bottom: 1px solid rgba(241, 223, 201, .8);
+    background: rgba(250, 231, 253, .86);
+    border-bottom: 1px solid rgba(231, 196, 239, .92);
+    -webkit-backdrop-filter: blur(16px);
     backdrop-filter: blur(16px);
     transition: .25s
 }
 
 .site-header.scrolled {
-    box-shadow: 0 10px 30px rgba(91, 58, 40, .1);
-    background: rgba(255, 255, 255, .98)
+    box-shadow: 0 10px 30px rgba(122, 71, 146, .1);
+    background: rgba(250, 231, 253, .96)
 }
 
 .navbar {
@@ -118,7 +127,7 @@ textarea {
 
 .nav-links a:hover,
 .nav-links a.active {
-    background: var(--cream);
+    background: rgba(116, 204, 239, .16);
     color: var(--cocoa)
 }
 
@@ -126,9 +135,9 @@ textarea {
     display: none;
     width: 44px;
     height: 44px;
-    border: 1px solid var(--line);
+    border: 1px solid rgba(231, 196, 239, .95);
     border-radius: 8px;
-    background: var(--white);
+    background: rgba(255, 255, 255, .8);
     cursor: pointer
 }
 
@@ -158,7 +167,7 @@ textarea {
     min-height: calc(100vh - 76px);
     display: grid;
     align-items: center;
-    background: linear-gradient(90deg, rgba(47, 39, 34, .78), rgba(47, 39, 34, .22)), url("https://images.unsplash.com/photo-1486427944299-d1955d23e34d?auto=format&fit=crop&w=1800&q=80") center/cover
+    background: linear-gradient(90deg, rgba(90, 67, 58, .76), rgba(90, 67, 58, .2)), url("https://images.unsplash.com/photo-1486427944299-d1955d23e34d?auto=format&fit=crop&w=1800&q=80") center/cover
 }
 
 .hero:after {
@@ -234,15 +243,15 @@ textarea {
 }
 
 .primary {
-    background: var(--yellow);
+    background: linear-gradient(135deg, var(--yellow), #ffcf4d);
     color: var(--cocoa);
-    box-shadow: 0 12px 24px rgba(217, 154, 36, .24)
+    box-shadow: 0 12px 24px rgba(213, 139, 8, .24)
 }
 
 .secondary {
-    background: var(--white);
+    background: rgba(255, 255, 255, .92);
     color: var(--cocoa);
-    box-shadow: 0 12px 24px rgba(91, 58, 40, .12)
+    box-shadow: 0 12px 24px rgba(122, 71, 146, .12)
 }
 
 .section {
@@ -250,12 +259,12 @@ textarea {
 }
 
 .soft {
-    background: linear-gradient(180deg, #fffaf0, #fff3f6)
+    background: linear-gradient(180deg, rgba(250, 231, 253, .9), rgba(255, 247, 230, .95))
 }
 
 .page-hero {
     padding: 112px 0 78px;
-    background: linear-gradient(120deg, rgba(255, 248, 234, .96), rgba(255, 213, 220, .86)), url("https://images.unsplash.com/photo-1519915028121-7d3463d20b13?auto=format&fit=crop&w=1600&q=80") center/cover
+    background: linear-gradient(120deg, rgba(243, 208, 251, .95), rgba(177, 220, 141, .34)), url("https://images.unsplash.com/photo-1519915028121-7d3463d20b13?auto=format&fit=crop&w=1600&q=80") center/cover
 }
 
 .page-hero p {
@@ -314,7 +323,7 @@ p {
     padding: 18px;
     border-radius: 8px;
     background: rgba(255, 255, 255, .94);
-    box-shadow: 0 16px 32px rgba(91, 58, 40, .16)
+    box-shadow: 0 16px 32px rgba(122, 71, 146, .16)
 }
 
 .image-note span {
@@ -408,7 +417,7 @@ p {
 
 .feature:hover {
     transform: translateY(-4px);
-    box-shadow: 0 24px 50px rgba(91, 58, 40, .16)
+    box-shadow: 0 24px 50px rgba(122, 71, 146, .16)
 }
 
 .feature span {
@@ -460,7 +469,7 @@ p {
     margin: 26px 0;
     padding: 52px 0;
     color: var(--white);
-    background: linear-gradient(120deg, rgba(91, 58, 40, .94), rgba(232, 111, 141, .78)), url("https://images.unsplash.com/photo-1525257831700-183b9b8bf5db?auto=format&fit=crop&w=1500&q=80") center/cover
+    background: linear-gradient(120deg, rgba(90, 67, 58, .94), rgba(255, 111, 135, .78)), url("https://images.unsplash.com/photo-1525257831700-183b9b8bf5db?auto=format&fit=crop&w=1500&q=80") center/cover
 }
 
 .promo p,
@@ -575,7 +584,7 @@ textarea {
     border: 1px solid var(--line);
     border-radius: 8px;
     padding: 12px 14px;
-    background: #fffdf8;
+    background: rgba(255, 251, 246, .98);
     color: var(--text);
     outline: none;
     transition: .2s
@@ -585,7 +594,7 @@ input:focus,
 select:focus,
 textarea:focus {
     border-color: var(--honey);
-    box-shadow: 0 0 0 4px rgba(255, 215, 106, .28)
+    box-shadow: 0 0 0 4px rgba(116, 204, 239, .24)
 }
 
 textarea {
@@ -624,8 +633,8 @@ small {
 
 .site-footer {
     padding: 58px 0 24px;
-    color: #fdf7ee;
-    background: #3d2a22
+    color: #fef9ff;
+    background: linear-gradient(180deg, #5d4355 0%, #4a3845 100%)
 }
 
 .footer-grid {
@@ -647,7 +656,7 @@ small {
 .site-footer p,
 .site-footer a {
     display: block;
-    color: #f0ded0
+    color: #f4e4f7
 }
 
 .socials {
@@ -690,9 +699,9 @@ small {
     height: 54px;
     border: 0;
     border-radius: 8px;
-    background: var(--yellow);
+    background: linear-gradient(135deg, var(--yellow), #ffdc7f);
     color: var(--cocoa);
-    box-shadow: 0 12px 26px rgba(91, 58, 40, .22);
+    box-shadow: 0 12px 26px rgba(122, 71, 146, .22);
     cursor: pointer;
     font-weight: 900;
     opacity: 0;
@@ -714,7 +723,7 @@ small {
     display: none;
     place-items: center;
     padding: 30px;
-    background: rgba(47, 39, 34, .82)
+    background: rgba(58, 43, 49, .84)
 }
 
 .lightbox.open {
@@ -774,9 +783,9 @@ small {
         display: grid;
         gap: 6px;
         padding: 18px;
-        background: rgba(255, 255, 255, .98);
+        background: rgba(250, 231, 253, .98);
         border-bottom: 1px solid var(--line);
-        box-shadow: 0 20px 35px rgba(91, 58, 40, .12);
+        box-shadow: 0 20px 35px rgba(122, 71, 146, .12);
         transform: translateY(-130%);
         transition: .25s
     }
