@@ -1,0 +1,5 @@
+/.env
+js/config.js
+# Optional local env files
+.env.local
+.env.*.local

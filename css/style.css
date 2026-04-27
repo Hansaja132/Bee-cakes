@@ -79,6 +79,9 @@ textarea {
 }
 
 .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     font-family: Georgia, "Times New Roman", serif;
     font-size: 1.65rem;
     font-weight: 700;
@@ -86,16 +89,11 @@ textarea {
     white-space: nowrap
 }
 
-.logo:before {
-    content: "";
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    margin-right: 8px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 35% 35%, #fff5c4, var(--yellow) 55%, var(--honey));
-    box-shadow: 9px 2px 0 -3px var(--cocoa);
-    vertical-align: 2px
+.logo img {
+    display: block;
+    width: auto;
+    height: 46px;
+    object-fit: contain
 }
 
 .nav-links {
